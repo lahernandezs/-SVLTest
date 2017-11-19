@@ -32,12 +32,12 @@ router.delete('/:id',function(req,res,next){
     res.send(productos);
   });
 });
-router.put('/actualiza/:id',(req,res,next) => {
+router.put('/actualiza/:id',function(req,res,next){
   models.Producto.update({
       nombre: req.body.nombre,
       ean: req.body.ean
     },{where:{id:req.params.id}})
-    .then((productos) =>{
+    .then(function(productos){
       console.log('Productos: '+productos);
       if(productos ==1){
         res.send({respuesta:'Actualizado OK'});
